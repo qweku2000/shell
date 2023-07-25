@@ -1,18 +1,23 @@
 #include "shell.h"
 
 /**
- * main - main entry point for program
+ *main - main entry point for program
  *
  * return - void
- */
+*/
+
 int main()
 {
-    while (1)
+  while (1)
     {
-        printprompt_readline();
+      printprompt_readline();
     }
-    return (0);
+  return (0);
+
 }
+
+
+
 
 /**
  * printprompt_readline - Function to print prompt and read input from user
@@ -28,39 +33,37 @@ void printprompt_readline()
     int ntokens = 0, i;
     char **string_arr;
     char *token;
-    char *cwd;
+    char buf[1064];
     int is_interactive = isatty(fileno(stdin));
 
     if (is_interactive)
     {
-        cwd = malloc(1064); /*Allocate memory for the current working directory*/
-        if (cwd != NULL && getcwd(cwd, 1064) != NULL)
+        if (getcwd(buf, sizeof(buf)) != NULL)
         {
-            write(STDOUT_FILENO, cwd, strlen(cwd));
-            write(STDOUT_FILENO, "\n$ ", 3);
+            write(STDOUT_FILENO, buf, strlen(buf));
+	    write(STDOUT_FILENO, "\n$ ", 3);
         }
         else
         {
             perror("Error: cwd error");
         }
-        free(cwd); /* Free the dynamically allocated cwd buffer*/
     }
 
     /* Function for reading input from user */
     getline_bytes = getline(&buffer, &n, stdin);
     if (getline_bytes == -1)
-    {
-        free(buffer); /* Free dynamically allocated buffer */
-        exit(0);
-    }
+      {
+	free(buffer); /*Free dynamically allocated buffer*/
+	exit(0);
+      }
     if (getline_bytes == 1 && buffer[0] == '\n')
-    {
-        free(buffer); /* Free dynamically allocated buffer */
-        return;
-    }
+      {
+	free(buffer); /*Free dynamically allocated buffer*/
+	return;
+      }
 
     buffer_copy = strdup(buffer);
-
+   
     hashtags(buffer_copy);
 
     /* Tokenize string */
@@ -88,7 +91,7 @@ void printprompt_readline()
 
     for (i = 0; string_arr[i] != NULL; i++)
     {
-        free(string_arr[i]);
+      free(string_arr[i]);
     }
     free(string_arr);
     free(buffer_copy);

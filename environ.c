@@ -6,6 +6,7 @@
  *
  * Return: The full path of the command if found, NULL otherwise
  */
+
 char *environment(char *env)
 {
     char *cmd_path = getenv("PATH");
@@ -45,7 +46,7 @@ char *environment(char *env)
         free(copied_path);
         if (stat(env, &path_info) == 0)
         {
-            return env;
+	  return strdup(env);
         }
     }
 
