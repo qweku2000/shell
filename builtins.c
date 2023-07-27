@@ -6,7 +6,7 @@
  *
  * Return: Always returns 0
  */
-int exit_shell(char *status)
+int exit_hsh(char *status)
 {
   int code = 0;
 
@@ -25,7 +25,7 @@ int exit_shell(char *status)
  *
  * Return: 0 on success, -1 on failure
  */
-int dir_change(char argv[])
+int ch_directory(char argv[])
 {
     if (chdir(argv) < 0)
     {
@@ -34,7 +34,7 @@ int dir_change(char argv[])
     }
     else
     {
-       printprompt_readline();
+       printprompt();
        return (0);
     }
 }

@@ -5,19 +5,19 @@
  * @buff: user input;
  * Return:void
  */
-void hashtags(char *input)
+void hashtags(char *input1)
 {
   int i;
 
-  for (i = 0; input[i] != '\0'; i++)
+  for (i = 0; input1[i] != '\0'; i++)
     {
-      if (input[0] == '#')
+      if (input1[0] == '#')
         {
-          printprompt_readline();
+          printprompt();
         }
-      else if (input[i] == '#')
+      else if (input1[i] == '#')
         {
-          input[i] = '\0';
+          input1[i] = '\0';
           return;
         }
     }

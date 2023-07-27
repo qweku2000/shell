@@ -10,7 +10,7 @@ int main()
 {
   while (1)
     {
-      printprompt_readline();
+      printprompt();
     }
   return (0);
 
@@ -20,9 +20,9 @@ int main()
 
 
 /**
- * printprompt_readline - Function to print prompt and read input from user
+ * printprompt - Function to print prompt and read input from user
  */
-void printprompt_readline()
+void printprompt()
 {
     /* Initialization */
     char *buffer = NULL;
@@ -87,7 +87,7 @@ void printprompt_readline()
     }
     string_arr[i] = NULL;
 
-    executable(string_arr);
+    execute(string_arr);
 
     for (i = 0; string_arr[i] != NULL; i++)
     {

@@ -7,7 +7,7 @@
  * Return: The full path of the command if found, NULL otherwise
  */
 
-char *environment(char *env)
+char *envir(char *env)
 {
     char *cmd_path = getenv("PATH");
     char *copied_path;

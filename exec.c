@@ -5,7 +5,7 @@
  * executable - Executes the given command
  * @argv: Array of arguments passed to the command
  */
-void executable(char *argv[])
+void execute(char *argv[])
 {
     char *cmd = NULL;
     char *cmd_act = NULL;
@@ -19,7 +19,7 @@ void executable(char *argv[])
       
        if (strcmp(cmd, "exit") == 0)
 	  {
-            exit_shell(argv[1]);
+            exit_hsh(argv[1]);
 	  }
         else if (strcmp(cmd, "cd") == 0)
 	  {
@@ -65,7 +65,7 @@ void executable(char *argv[])
                 /* Child process */
 
                 /* Make sure that the new command is now a full path of the command */
-                cmd_act = environment(cmd);
+                cmd_act = envir(cmd);
 
 
                 if (cmd_act != NULL)
